@@ -153,7 +153,7 @@ function Tarea() {
               type="button"
               className="close"
               onClick={() => handleTaskClick(task)}
-              style={{ fontSize: "12px", marginLeft: "5px" }}
+              style={{ fontSize: "12px", marginLeft: "1rem" }}
             >
               Emilinar
             </button>
@@ -191,8 +191,8 @@ function ColorForm() {
     setColors(storedColors);
   }, []);
 
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter" && newColor.trim() !== "") {
+  const handleColorSave = () => {
+    if (newColor.trim() !== "") {
       // Agregar el nuevo color al arreglo de colores
       const newColors = [...colors, newColor];
       // Guardar los colores en el localStorage
@@ -225,18 +225,27 @@ function ColorForm() {
   return (
     <div className="App">
       <h1>Administrar colores</h1>
-      <input
-        type="text"
-        placeholder="Ingrese un color (ej. Blue)"
-        value={newColor}
-        onChange={(e) => setNewColor(e.target.value)}
-        onKeyPress={handleKeyPress}
-      />
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <input
+          type="text"
+          style={{fontSize: "1.5rem"}}
+          placeholder="Ingrese un color (ej. Blue)"
+          value={newColor}
+          onChange={(e) => setNewColor(e.target.value)}
+        />
+        <button onClick={handleColorSave} style={{ marginTop: "0.5rem", marginLeft: "auto" }}>
+          Guardar
+        </button>
+      </div>
       <ul>
         {colors.map((color, index) => (
           <li
             key={index}
-            style={{ display: "flex", alignItems: "center" }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
           >
             <div
               style={{
@@ -247,7 +256,7 @@ function ColorForm() {
               }}
               onClick={() => handleColorClick(color)}
             ></div>
-            {color}
+            <span>{color}</span>
             <button
               type="button"
               onClick={() => handleDeleteColor(color)}
@@ -258,17 +267,14 @@ function ColorForm() {
           </li>
         ))}
       </ul>
-      {selectedColor && (
-        {/* <div style={{ marginTop: "10px" }}>
+{/*       {selectedColor && (
+        <div style={{ marginTop: "10px" }}>
           Color seleccionado:{" "}
           <span style={{ color: selectedColor }}>{selectedColor}</span>
-        </div> */}
-      )}
+        </div>
+      )} */}
     </div>
   );
 }
 
 export default ColorForm;
-
-
-

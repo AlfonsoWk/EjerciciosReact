@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Ejercicios from './components/Ejercicios'
-/* import Button from './components/Button' */
+import Button from './components/Button'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -30,10 +30,10 @@ function App() {
   {/*     <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p> */}
-      <Ejercicios >
+      <Ejercicios>
         my Friend
       </Ejercicios>
-      {/* <Button>Click Me</Button>  */}
+      {/* <Button>Click Me</Button> */} 
     </>
   )
 }
